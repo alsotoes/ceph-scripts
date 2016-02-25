@@ -3,9 +3,9 @@ Let's see how it works
 
 * TXT output
 
+
 	$ python ceph_space.py --output txt --ratio 0.2 "Ceph Cluster"
 	
-	===============
 	Cluster codename: Ceph Cluster
 	Cluster ID: 85289369-1173-44b9-8a4c-ab5c1b50270f
 	Cluster mon to connect: stor01.ceph.local
@@ -18,7 +18,7 @@ Let's see how it works
 	
 		Total Available: 6.5TB
 		Percentage Available: 75%
-	===============
+
 
 * CSV output
 
