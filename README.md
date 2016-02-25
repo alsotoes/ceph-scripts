@@ -6,19 +6,17 @@ Let's see how it works
 
 	$ python ceph_space.py --output txt --ratio 0.2 "Ceph Cluster"
 	
-	 Cluster codename: Ceph Cluster
-	 
-	 Cluster ID: 85289369-1173-44b9-8a4c-ab5c1b50270f
-	 
-	 Cluster mon to connect: stor01.ceph.local
-	 Cluster Statistics
-	 	Total: 10.7TB
-	 	Reserved: 2.1TB
-	 	Usable (before warning): 8.5TB
-	 	Used: 2.1TB
-	
- 		Total Available: 6.5TB
- 		Percentage Available: 75%
+	 	Cluster codename: Ceph Cluster
+	 	Cluster ID: 85289369-1173-44b9-8a4c-ab5c1b50270f
+	 	Cluster mon to connect: stor01.ceph.local
+	 	Cluster Statistics
+	 		 	Total: 10.7TB
+	 		 	Reserved: 2.1TB
+	 		 	Usable (before warning): 8.5TB
+	 		 	Used: 2.1TB
+	 		 	
+	 		 	Total Available: 6.5TB
+	 		 	Percentage Available: 75%
 
 
 * CSV output
