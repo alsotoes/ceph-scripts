@@ -1,7 +1,7 @@
 Let's see how it works ceph_space.py
 =======
 
-* TXT output (any of the tree options print the same output)
+* TXT output (any of the three options print the same output)
 
 
 	$ python ceph_space.py "Ceph Cluster"  
