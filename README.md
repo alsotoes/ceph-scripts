@@ -4,9 +4,9 @@ Let's see how it works ceph_space.py
 * TXT output (any of the tree options print the same output)
 
 
-	$ python ceph_space.py "Ceph Cluster"
-	$ python ceph_space.py --output txt "Ceph Cluster"
-	$ python ceph_space.py --output txt --ratio 0.2 "Ceph Cluster"
+	$ python ceph_space.py "Ceph Cluster"  
+	$ python ceph_space.py --output txt "Ceph Cluster"  
+	$ python ceph_space.py --output txt --ratio 0.2 "Ceph Cluster"  
 	
 	 	Cluster codename: Ceph Cluster
 	 	Cluster ID: 85289369-1173-44b9-8a4c-ab5c1b50270f
