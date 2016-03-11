@@ -12,6 +12,7 @@ import textwrap
 import rados
 import math
 import sys
+import csv
 
 
 # http://stackoverflow.com/questions/1094841/
@@ -29,7 +30,7 @@ def args_parse():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent('''\
                 ===============
-                Connecto to local ceph cluster to get available and total space.
+                Connect to local ceph cluster to get available and total space.
                     * Works only locally reading ceph.conf.
                     * Uses a ratio to set working storage space on calculations.
                 ===============
@@ -62,17 +63,18 @@ def print_txt(ceph):
 
 
 def print_csv(ceph):
-    # Headers
-    print "%s,%s,%s,%s,%s,%s,%s,%s,%s" % (
-        "Cluster Name", "Cluster ID", "Cluster MON", "Total", "Reserved",
-        "Usable", "Used", "Available", "Percentage Available")
-    # Data
-    print "%s,%s,%s,%s,%s,%s,%s,%s,%s" % (
-        ceph['name'], ceph['fsid'], ceph['mon'], sizeof_fmt(ceph['total'] * 1024),
-        sizeof_fmt(ceph['reserved'] * 1024), sizeof_fmt(ceph['usable'] * 1024),
-        sizeof_fmt(ceph['used'] * 1024), sizeof_fmt(ceph['available'] * 1024),
-        str(ceph['p_available']) + "%")
+    f = open('output.csv', 'wt')
+    try:
+        writer = csv.writer(f)
+        writer.writerow("Cluster Name", "Cluster ID", "Cluster MON", "Total", "Reserved", "Usable", "Used", "Available", "Percentage Available")
+        writer.writerow(ceph['name'], ceph['fsid'], ceph['mon'], sizeof_fmt(ceph['total'] * 1024),
+            sizeof_fmt(ceph['reserved'] * 1024), sizeof_fmt(ceph['usable'] * 1024),
+            sizeof_fmt(ceph['used'] * 1024), sizeof_fmt(ceph['available'] * 1024),
+            str(ceph['p_available']) + "%")
+    finally:
+        f.close()
 
+    print open('output.csv', 'rt').read()
 
 def get_cluster_info(cluster, ceph):
     ceph['default_size'] = int(cluster.conf_get('osd pool default size'))
@@ -94,7 +96,7 @@ def get_and_calculate(cluster_stats, ceph, args):
 
 
 def main():
-    ceph = {}
+    ceph = dict()
     args = args_parse()
 
     cluster = rados.Rados(conffile=args.config)
