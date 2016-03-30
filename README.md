@@ -1,4 +1,8 @@
-Let's see how it works ceph_space.py
+Let's see how it works 
+=======
+
+
+ceph_space.py
 =======
 
 * TXT output (any of the three options print the same output)
@@ -40,3 +44,16 @@ Let's see how it works ceph_space.py
 
 		Cluster Name,Cluster ID,Cluster MON,Total,Reserved,Usable,Used,Available,Percentage Available
 		Ceph Cluster,85289369-1173-44b9-8a4c-ab5c1b50270f,stor01.ceph.local,10.7TB,2.1TB,8.5TB,2.1TB,6.5TB,75%
+
+
+ceph_provisioned_space.py
+=======
+
+* TXT output, no params (yet)
+
+
+	$ python ceph_provisioned_space.py
+
+        ===============
+        Provisioned space (all pools, not cephfs):  16.1TB
+        ===============
