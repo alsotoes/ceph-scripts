@@ -3,7 +3,7 @@
 
 """
     :copyright:     (c) 2015 by Alvaro Soto
-    :license:       GPL v2, see LICENSE for more details.
+    :license:       GPL v3, see LICENSE for more details.
     :contact info:  http://headup.ws / alsotoes@gmail.com
 """
 
