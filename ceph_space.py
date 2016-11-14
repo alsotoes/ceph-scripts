@@ -38,8 +38,9 @@ def args_parse():
                 ===============
             '''))
 
-    parser.add_argument("--config", type=str, default="/etc/ceph/ceph.conf", help='Ceph config file (ceph.conf).')
-    parser.add_argument("--ratio", type=float, default=0.2, help='Reserved storage ratio, by default 0.2 as a 20%%.')
+    parser.add_argument("--config", type=str, default="/etc/ceph/ceph.conf", help='Ceph config file (/etc/ceph/ceph.conf by default).')
+    parser.add_argument("--clustername", type=str, default="ceph", help='Cluster name (ceph by default).')
+    parser.add_argument("--ratio", type=float, default=0.3, help='Reserved storage ratio, by default 0.3 as a 30%%.')
     parser.add_argument("--output", type=str, required=False, choices=["csv", "txt"], help='Output format to print in stdout.')
     parser.add_argument("--file", type=str, required=False, help='Output CSV file, this option override --output.')
     parser.add_argument("name", type=str, help='Cluster fancy name.')
@@ -104,7 +105,7 @@ def main():
     ceph = dict()
     args = args_parse()
 
-    cluster = rados.Rados(conffile=args.config)
+    cluster = rados.Rados(conffile=args.config, clustername=args.clustername)
     cluster.connect()
 
     cluster_stats = get_cluster_info(cluster, ceph)
